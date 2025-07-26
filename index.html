@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>My Weather Application</title>
 </head>
 <body>
     
     <div class="search-button">
+        <form class="search-form">
     <input type="submit" class="search" value="Search">
     <input type="text"  class="search-input" placeholder="Enter the name of a city...." required>
-    </div>
+    </form>
+</div>
     
     <div class="weather-data">
         <div class="left">
@@ -23,16 +28,16 @@
 
     <div class="temperature">
     <p class="temp">
-    <span>23</span> <superscript>℃</superscript>
+    <span class="temp-detail">23</span> <superscript>℃</superscript>
     </p>
     </div>
     </div>
-
     <div class="right">
     <div class="weather-details">
+    <p> Time :  <span class="current-date"></span> </p>
     <hr>
-    <p> Wind     : <span class="wind">24.3</span>km/h</p><hr>
-    <p>Humidity  : <span class="humidity">80</span>%</p><hr>
+    <p> Wind     : <span class="wind">24.3km/h</span></p><hr>
+    <p>Humidity  : <span class="humidity">80%</span></p><hr>
     <p>Condition : <span class="condition">broken clouds</span></p><hr>
     </div>
 
@@ -42,6 +47,9 @@
     </div>
 
    </div>
+   <footer>
+    <p>Coded by <a href="https://github.com/Aframia" target="_blank">Sandra Aframea Ofosu</a> on <a href="https://github.com/Aframia/Weather-project" target="_blank">Github</a> hosted on <a href="#" target="_blank">Netlify</a></p>
+   </footer>
     <script src="src/script.js"></script>
 </body>
 </html>
