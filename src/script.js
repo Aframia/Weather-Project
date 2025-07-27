@@ -36,6 +36,7 @@ function displayTemperature(response){
     let temperature = document.querySelector(".temp-detail");
     let fahrenheit = document.querySelector(".fahrenheit");
 
+
     city.innerHTML = response.data.city;
     country.innerHTML = response.data.country;
     humidity.innerHTML = `${response.data.temperature.humidity}%`;
@@ -46,10 +47,36 @@ function displayTemperature(response){
     fahrenheit.innerHTML = (temp * 9/5 +32) + "  Fahrenheit";
     let currentDate = new Date();
     day.innerHTML = formatDate(currentDate);
-    
+
+    searchForecast(response.data.city);
 }
+function showForecast(response){
+    let weatherDay = document.querySelector(".weather-day");
+    let weatherIcon = document.querySelector(".weather-icon");
+    let minTemp = document.querySelector(".minimum-temperature");
+    let maxTemp = document.querySelector(".maximum-temperature");
+    let days  = ["Sun","Mon","Tue","Wed","Thurs","Fri","Sat"];
+  
+      result = response.data.daily;
+      let city = result[1];
+      weatherIcon.innerHTML = `<img src="${city.condition.icon_url}" />`
+      minTemp.innerHTML = Math.round(city.temperature.minimum);
+      maxTemp.innerHTML = Math.round(city.temperature.maximum);
+        let time = new Date( city.time * 1000);
+        let new_day = time.getDay();
+       let day = days[new_day];
+      weatherDay.innerHTML = day;
+  }
 
 
+    console.log
+
+function searchForecast(query){
+  let apiKey ="fb820fo1b1cfa408bca4ft48b00334dc";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${query}&key=${apiKey}`;
+
+  axios.get(apiUrl).then(showForecast);
+}
 function searchCity(new_city){
   let city = new_city;
   let apiKey = "b2a5adcct04b33178913oc335f405433";
@@ -71,3 +98,6 @@ function search(event){
 
 let form = document.querySelector(".search-form");
 form.addEventListener("submit",search)
+
+  
+
